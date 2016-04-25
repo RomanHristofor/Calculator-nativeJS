@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Credit calculator</title>
+	<link href="style.css" rel="stylesheet">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+		<h2 class="calcHead">Кредитный калькулятор</h2>
+
+	<div class="calc" >
+		<form name="PMT" enctype="multipart/form-data" action="" method="POST" >
+			<label id="credit" class="calcElement" for="">Сумма кредита</label>
+				<span id="isEmptysumCredit" ></span>
+			<input id="sumCredit" name="PV" value="33333333" class="calcElement">
+
+			<label id="term" class="calcElement" for="">Срок</label>
+				<span id="isEmptytermCredit" ></span><br>
+			<input id="termCredit" name="NP" value="3" class="calcElement">
+			<label id="month" class="calcElement" for="">мес.</label>
+
+			<label id="Vlabel" class="calcElement" for="">Валюта</label>
+			<select id="valuta" class="calcElement">
+				<option value="бел.руб">бел.руб.</option>
+				<option value="usd">usd</option>
+				<option value="euro">euro</option>
+			</select>
+
+			<label id="year" class="calcElement" for="">%, год</label>
+				<span id="isEmptypercentCredit" ></span><br>
+			<input id="percentCredit" name="IR" value="3" class="calcElement">
+
+			<label id="methodPay" class="calcElement" for="">Способ выплаты:</label>
+
+					<input id="radio1" name="PayType" value="1" type="radio" checked >
+					<label id="equalPay" class="calcElement" for="radio1">равными платежами</label>
+
+					<input id="radio2" name="PayType" value="2" type="radio">
+					<label id="decrease" class="calcElement" for="radio2">с уменьшением суммы платежа</label>
+
+			<input id="calculate" type="button" onclick="CheckForm();" value="Рассчитать кредит" class="calcElement">
+
+			<div id="result"></div>
+			<div id="buildTable"></div>
+		</form>
+	</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
