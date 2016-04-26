@@ -3,34 +3,33 @@
 }
 
 body {
-	background: url(images/grid.png);
+	background: url(images/bg.png);
 	color: #333;
-/*	font: 1em Arial, Helvetica, sans-serif;
-	text-transform: uppercase;*/
+	font: 14px Arial, Helvetica, sans-serif;
+	margin: 70px auto;
+}
+
+.calc-title {
+	color: #3b45a6;
+	font-size: 17px;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: 0 1px #fff, 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .calc {
 	background: linear-gradient(#3e8cae,#8bceec);
-	width:600px;
-	height:316px;
+	width: 600px;
+	height: 316px;
 	border-radius:5px;
-	font-family: Arial,Helvetica,Sans-Serif;
-	font-size: 14px;
 	margin: 10px auto;
-	padding: 10px;
 	position: relative;
-	left:-200px;
+	padding: 10px;
 	color: #fff;
 	box-shadow: 0 4px #009de4, 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
-.calcHead {
-	text-align: center;
-	position: relative;
-	left: -190px;
-}
-
-.calcElement {
+.calc-element {
 	position: relative;
 	margin-left: 10px;
 	margin-top: 10px;
@@ -44,6 +43,27 @@ label {
 	font-weight: bold;
 	margin-bottom: 5px;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.calc span {
+	color: #fb9005;
+	font-size: 85%;
+	font-weight: bold;
+	line-height: 12px;
+	position: absolute;
+}
+
+#isEmptysumCredit {
+	top: 12px;
+	left: 170px;
+}
+#isEmptytermCredit {
+	top: 25px;
+	left: 170px;
+}
+#isEmptypercentCredit {
+	top: 39px;
+	left: 170px;
 }
 
 #term {
@@ -60,17 +80,17 @@ label {
 	height: 20px;
 }
 
+#selectValuta {
+	top: 48px;
+	left: -79px;
+	width: 53px;
+	height: 20px;
+}
+
 #year{
 	top: 48px;
 	left: -35px;
 	width: 44px;
-	height: 20px;
-}
-
-#Vlabel {
-	top: 48px;
-	left: -79px;
-	width: 53px;
 	height: 20px;
 }
 
@@ -133,38 +153,20 @@ select {
 	height: 30px;
 }
 
-#radio1 {
+#payment1 {
 	top: 97px;
 	left: -53px;
 	position: relative;
 	box-shadow:none;
 }
 
-#radio2 {
+#payment2 {
 	top: 118px;
 	left: -232px;
 	position: relative;
 	box-shadow:none;
 }
-.calc span {
-	color: #fb9005;
-	font-size: 85%;
-	font-weight: bold;
-	line-height: 12px;
-	position: absolute;
-}
-#isEmptysumCredit {
-	top: 12px;
-	left: 170px;
-}
-#isEmptytermCredit {
-	top: 25px;
-	left: 170px;
-}
-#isEmptypercentCredit {
-	top: 39px;
-	left: 170px;
-}
+
 
 #calculate {
 	position: relative;

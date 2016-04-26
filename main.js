@@ -4,65 +4,65 @@ fnf.addEventListener('keyup', function(evt){
 		fnf.value = n.toLocaleString();
 }, false);
 
-function CheckForm(){
+function checkForm(){
 	var hash, flag, key, fieldValue, elementId;
 		hash = {
-			 'sumCredit': 'Сумма кредита',
-			 'termCredit': 'Срок кредита',
-			 'percentCredit': 'Процент кредита'
+			'sumCredit':     'Сумма кредита',
+			'termCredit':    'Срок кредита',
+			'percentCredit': 'Процент кредита'
 		};
 		flag = true;
 		for (key in hash) {
+			if( hash.hasOwnProperty( key ) ) {
 				fieldValue = document.getElementById(key).value;
 				elementId = "isEmpty" + key;
 
 				if(key === 'sumCredit') {
 					fieldValue = parseInt(fieldValue.replace(/\D/g,''),10);
 					if( isNaN(fieldValue) ) {
-						document.getElementById(elementId).innerHTML = "Вы не заполнили поле &laquo;" + hash[key]+ "&raquo;";
+						document.getElementById(elementId).innerHTML = "Вы не заполнили поле «" + hash[key]+ "»";
 						flag = false;
 					}
 					else if ( fieldValue > 999999999999 ) {
-						document.getElementById(elementId).innerHTML = "Поле &laquo;" + hash[key] + "&raquo; заполнено в неверном формате";
+						document.getElementById(elementId).innerHTML = "Поле «" + hash[key] + "» заполнено в неверном формате";
 						flag = false;
 					}
 					else if ( fieldValue < 1 ) {
-						document.getElementById(elementId).innerHTML = "Поле &laquo;" + hash[key] + "&raquo; заполнено в неверном формате";
+						document.getElementById(elementId).innerHTML = "Поле «" + hash[key] + "» заполнено в неверном формате";
 						flag = false;
 					}
 					else document.getElementById(elementId).innerHTML = "";
 				}
-
-					else if( isNaN(fieldValue) ) {
-						document.getElementById(elementId).innerHTML = "Поле &laquo;" + hash[key] + "&raquo; заполнено в неверном формате";
-							flag = false;
-					}
-					else if( fieldValue == "" ) {
-						document.getElementById(elementId).innerHTML = "Вы не заполнили поле &laquo;" + hash[key]+ "&raquo;";
-							flag = false;
-					}
-					else if ( fieldValue < 1 ) {
-						document.getElementById(elementId).innerHTML = "Поле &laquo;" + hash[key] + "&raquo; заполнено в неверном формате";
+				else if( isNaN(fieldValue) ) {
+					document.getElementById(elementId).innerHTML = "Поле «" + hash[key] + "» заполнено в неверном формате";
 						flag = false;
-					}
-
+				}
+				else if( fieldValue === "" ) {
+					document.getElementById(elementId).innerHTML = "Вы не заполнили поле «" + hash[key]+ "»";
+						flag = false;
+				}
+				else if ( fieldValue < 1 ) {
+					document.getElementById(elementId).innerHTML = "Поле «" + hash[key] + "» заполнено в неверном формате";
+					flag = false;
+				}
 				else if(key === 'termCredit') {
 					if( fieldValue >= 61 ) {
-						document.getElementById(elementId).innerHTML = "Максимальный &laquo;" + hash[key] + "&raquo; не более 60 месяцев";
+						document.getElementById(elementId).innerHTML = "Максимальный «" + hash[key] + "» не более 60 месяцев";
 						flag = false;
 					}
 					else document.getElementById(elementId).innerHTML = "";
 				}
 				else if(key === 'percentCredit') {
 					if( fieldValue >= 201 ) {
-						document.getElementById(elementId).innerHTML = "Максимальный &laquo;" + hash[key] + "&raquo; не более 200%";
+						document.getElementById(elementId).innerHTML = "Максимальный «" + hash[key] + "» не более 200%";
 						flag = false;
 					}
 					else document.getElementById(elementId).innerHTML = "";
 				}
 				else {
-							document.getElementById(elementId).innerHTML = "";
+						document.getElementById(elementId).innerHTML = "";
 				}
+			}
 		}
 		if(flag === true) {
 			calculate();
@@ -77,8 +77,9 @@ var container = document.getElementById("result");
 
 function calculate() {
 	var output, itog, month, current, over, valuta, PV, IR, NP, PT,
-			pPercent, mPayment, pAmortization, month, dataTable, debt,
+			pPercent, mPayment, pAmortization, dataTable, debt,
 			i, tmp, Percent, Payment;
+	pPercent = []; mPayment = []; pAmortization = []; month = []; dataTable = [];
 
 	valuta = document.getElementById("valuta").value;
 	PV = document.PMT.PV.value;
@@ -103,11 +104,7 @@ function calculate() {
 	}
 	else if(PT === 2) {
 		document.getElementById('result').innerHTML = "";
-		pPercent = [];
-		mPayment = [];
-		pAmortization = [];
-		month = [];
-		dataTable = [];
+
 		debt = PV / NP;
 		debt = Math.floor(debt);
 
@@ -129,63 +126,64 @@ function calculate() {
 }
 
 function buildDivPay( arg, month, over) {
-	var div = document.createElement("div");
-	div.setAttribute("class","output");
+	var div, i, k, key, p, pPercent, PV, valuta, tmp, result, above, divLessSumPay, divEqualPay, style,
+	classNameDecrease, classNameEqual, outputDecrease, outputEqual;
+		div = document.createElement("div");
+		div.setAttribute("class","output");
 
-	if (arguments.length == 1) {
-		var pPercent = arg;
-		var PV = document.PMT.PV.value;
+	if (arguments.length === 1) {
+		pPercent = arg;
+		PV = document.PMT.PV.value;
 		PV = parseInt(PV.replace(/\D/g,''),10);
-		var valuta = document.getElementById("valuta").value;
+		valuta = document.getElementById("valuta").value;
 
 		div.setAttribute("style","height: 120px;");
-		var p, clas, result, output, over;
-		var tmp =0; var divLessSumPay = ['Итоговая выплата', 'Переплата по кредиту'];
+		tmp =0;
+		divLessSumPay = ['Итоговая выплата', 'Переплата по кредиту'];
 
-		for(var i = 0; i < pPercent.length;i++) {
+		for(i = 0; i < pPercent.length;i++) {
 					tmp += pPercent[i];
 					result = PV+tmp;
 					result = Math.floor(result);
-					output = result.toLocaleString() + valuta;
+					outputDecrease = result.toLocaleString() + valuta;
 					result -= PV;
-					over = result.toLocaleString() + valuta;
+					above = result.toLocaleString() + valuta;
 		}
-			for(var k in divLessSumPay) {
-				if(k === '0') {
-					clas = 'resultCredit';
-					p = divLessSumPay[k];
-					createDiv(p,clas,div,output);
-				}
-				else {
-					clas = 'overPayment';
-					p = divLessSumPay[k];
-					createDiv(p,clas,div,over);
-				}
+		for(k in divLessSumPay) {
+			if(k === '0') {
+				classNameDecrease = 'resultCredit';
+				p = divLessSumPay[k];
+				createDiv( p, classNameDecrease, div, outputDecrease );
 			}
+			else {
+				classNameDecrease = 'overPayment';
+				p = divLessSumPay[k];
+				createDiv( p, classNameDecrease, div, above );
+			}
+		}
 		container.appendChild(div);
 	}
 
-	else if (arguments.length == 3) {
-		var output = arg;
-		var divEqualPay = ['Итоговая выплата','Ежемесячный платеж','Переплата по кредиту'];
-		var p, clas, style;
+	else if (arguments.length === 3) {
+		outputEqual = arg;
+		divEqualPay = ['Итоговая выплата','Ежемесячный платеж','Переплата по кредиту'];
 
-		for(var k in divEqualPay) {
-			if(k === '0') {
-				clas = 'resultCredit';
-				p = divEqualPay[k];
-				createDiv( p, clas, div, output );
+		for(key in divEqualPay) {
+			if(key === '0') {
+				classNameEqual = 'resultCredit';
+				p = divEqualPay[key];
+				createDiv( p, classNameEqual, div, outputEqual );
 			}
-			else if(k === '1') {
-				clas = 'montPayment';
-				p = divEqualPay[k];
-				createDiv( p, clas, div, month );
+			else if(key === '1') {
+				classNameEqual = 'montPayment';
+				p = divEqualPay[key];
+				createDiv( p, classNameEqual, div, month );
 			}
-			else if(k === '2') {
-				clas = 'overPayment';
-				p = divEqualPay[k];
-				style = "top:110px;"
-				createDiv( p, clas, div, over, style );
+			else if(key === '2') {
+				classNameEqual = 'overPayment';
+				p = divEqualPay[key];
+				style = "top:110px;";
+				createDiv( p, classNameEqual, div, over, style );
 			}
 		}
 		container.appendChild(div);
@@ -194,16 +192,16 @@ function buildDivPay( arg, month, over) {
 
 function createDiv( P, clas, div, res, style ) {
 	var p, span;
-	p = document.createElement('p');
-	p.setAttribute("class", clas);
-	p.textContent = P;
-	div.appendChild(p);
-	span = document.createElement('span');
-	if(style !== undefined) {
-		span.setAttribute("style", style);
-	}
-	span.textContent = res;
-	div.appendChild(span);
+		p = document.createElement('p');
+		p.setAttribute("class", clas);
+		p.textContent = P;
+		div.appendChild(p);
+		span = document.createElement('span');
+		if(style !== undefined) {
+			span.setAttribute("style", style);
+		}
+		span.textContent = res;
+		div.appendChild(span);
 }
 
 function buildArrString(dataTable) {
@@ -215,16 +213,16 @@ function buildArrString(dataTable) {
 }
 
 function buildTable(dataTabStr) {
-	var arr = [];
-	var NP = +document.PMT.NP.value;
-	var valuta = document.getElementById("valuta").value;
+	var arr = [], NP, valuta, html, row, col;
+			NP = +document.PMT.NP.value;
+			valuta = document.getElementById("valuta").value;
 
-	var html ='<table><tr><th>Номер месяца</th><th>В погашение долга</th><th>Погашение процентов</th><th>Ежемесячный платеж</th>';
-	for (var row = 0; row < NP; row++) {
+	html ='<table><tr><th>Номер месяца</th><th>В погашение долга</th><th>Погашение процентов</th><th>Ежемесячный платеж</th>';
+	for (row = 0; row < NP; row++) {
 
 			html +='<tr style="text-align:right;">';
 
-			for(var col = 0; col < dataTabStr.length; col++) {
+			for(col = 0; col < dataTabStr.length; col++) {
 					html +='<td>';
 
 					arr[col] = dataTabStr[col][row];
