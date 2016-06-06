@@ -7,9 +7,9 @@ fnf.addEventListener('keyup', function(evt){
 function checkForm(){
 	var hash, flag, key, fieldValue, elementId;
 		hash = {
-			'sumCredit':     'Сумма кредита',
-			'termCredit':    'Срок кредита',
-			'percentCredit': 'Процент кредита'
+			'sumCredit':     'Amount of credit',
+			'termCredit':    'Credit term',
+			'percentCredit': 'The percentage of the loan'
 		};
 		flag = true;
 		for (key in hash) {
@@ -20,41 +20,41 @@ function checkForm(){
 				if(key === 'sumCredit') {
 					fieldValue = parseInt(fieldValue.replace(/\D/g,''),10);
 					if( isNaN(fieldValue) ) {
-						document.getElementById(elementId).innerHTML = "Вы не заполнили поле «" + hash[key]+ "»";
+						document.getElementById(elementId).innerHTML = "You did not fill the field «" + hash[key]+ "»";
 						flag = false;
 					}
 					else if ( fieldValue > 999999999999 ) {
-						document.getElementById(elementId).innerHTML = "Поле «" + hash[key] + "» заполнено в неверном формате";
+						document.getElementById(elementId).innerHTML = "Field «" + hash[key] + "» filled in the wrong format";
 						flag = false;
 					}
 					else if ( fieldValue < 1 ) {
-						document.getElementById(elementId).innerHTML = "Поле «" + hash[key] + "» заполнено в неверном формате";
+						document.getElementById(elementId).innerHTML = "Field «" + hash[key] + "» filled in the wrong format";
 						flag = false;
 					}
 					else document.getElementById(elementId).innerHTML = "";
 				}
 				else if( isNaN(fieldValue) ) {
-					document.getElementById(elementId).innerHTML = "Поле «" + hash[key] + "» заполнено в неверном формате";
+					document.getElementById(elementId).innerHTML = "Field «" + hash[key] + "» filled in the wrong format";
 						flag = false;
 				}
 				else if( fieldValue === "" ) {
-					document.getElementById(elementId).innerHTML = "Вы не заполнили поле «" + hash[key]+ "»";
+					document.getElementById(elementId).innerHTML = "You did not fill field «" + hash[key]+ "»";
 						flag = false;
 				}
 				else if ( fieldValue < 1 ) {
-					document.getElementById(elementId).innerHTML = "Поле «" + hash[key] + "» заполнено в неверном формате";
+					document.getElementById(elementId).innerHTML = "Field «" + hash[key] + "» filled in the wrong format";
 					flag = false;
 				}
 				else if(key === 'termCredit') {
 					if( fieldValue >= 61 ) {
-						document.getElementById(elementId).innerHTML = "Максимальный «" + hash[key] + "» не более 60 месяцев";
+						document.getElementById(elementId).innerHTML = "Maximum «" + hash[key] + "» no more than 60 months";
 						flag = false;
 					}
 					else document.getElementById(elementId).innerHTML = "";
 				}
 				else if(key === 'percentCredit') {
 					if( fieldValue >= 201 ) {
-						document.getElementById(elementId).innerHTML = "Максимальный «" + hash[key] + "» не более 200%";
+						document.getElementById(elementId).innerHTML = "Maximum «" + hash[key] + "» no more 200%";
 						flag = false;
 					}
 					else document.getElementById(elementId).innerHTML = "";
@@ -139,7 +139,7 @@ function buildDivPay( arg, month, over) {
 
 		div.setAttribute("style","height: 120px;");
 		tmp =0;
-		divLessSumPay = ['Итоговая выплата', 'Переплата по кредиту'];
+		divLessSumPay = ['Final payment', 'Overpayment on the loan'];
 
 		for(i = 0; i < pPercent.length;i++) {
 					tmp += pPercent[i];
@@ -166,7 +166,7 @@ function buildDivPay( arg, month, over) {
 
 	else if (arguments.length === 3) {
 		outputEqual = arg;
-		divEqualPay = ['Итоговая выплата','Ежемесячный платеж','Переплата по кредиту'];
+		divEqualPay = ['Final payment','Monthly payment','Overpayment on the loan'];
 
 		for(key in divEqualPay) {
 			if(key === '0') {
@@ -217,7 +217,7 @@ function buildTable(dataTabStr) {
 			NP = +document.PMT.NP.value;
 			valuta = document.getElementById("valuta").value;
 
-	html ='<table><tr><th>Номер месяца</th><th>В погашение долга</th><th>Погашение процентов</th><th>Ежемесячный платеж</th>';
+	html ='<table><tr><th>Number of the month</th><th>The debt repayment</th><th>Payment of interest</th><th>Monthly payment</th>';
 	for (row = 0; row < NP; row++) {
 
 			html +='<tr style="text-align:right;">';
