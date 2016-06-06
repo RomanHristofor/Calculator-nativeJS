@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Credit calculator</title>
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+	<h2 class="calc-title">Credit calculator</h2>
+	<div class="calc">
+		<form name="PMT" action="#">
+			<label id="credit" class="calc-element">Amount of credit</label>
+			<span id="isEmptysumCredit"></span>
+			<input id="sumCredit" class="calc-element" name="PV">
+
+			<label id="term" class="calc-element">Time</label>
+			<span id="isEmptytermCredit"></span><br>
+			<input id="termCredit" class="calc-element" name="NP">
+			<label id="month" class="calc-element">month</label>
+
+			<label id="selectValuta" class="calc-element">Currency</label>
+			<select id="valuta" class="calc-element">
+				<option value=" bel.rub">bel.rub.</option>
+				<option value=" usd">usd</option>
+				<option value=" euro">euro</option>
+			</select>
+
+			<label id="year" class="calc-element">%, year</label>
+			<span id="isEmptypercentCredit"></span><br>
+			<input id="percentCredit" class="calc-element" name="IR">
+
+			<label id="methodPay" class="calc-element">Payment method:</label>
+
+			<input id="payment1" name="PayType" value="1" type="radio" checked >
+			<label id="equalPay" class="calc-element" for="payment1">equal payments</label>
+
+			<input id="payment2" name="PayType" value="2" type="radio">
+			<label id="decrease" class="calc-element" for="payment2">with decreasing the amount of payment</label>
+
+			<input id="calculate" class="calc-element" type="button" value="Calculate credit" onclick="checkForm()">
+
+			<div id="result"></div>
+			<div id="buildTable"></div>
+		</form>
+	</div>
+<script src="main.js"></script>
+</body>
+</html>

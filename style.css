@@ -1,0 +1,232 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: url(images/bg.png);
+	color: #333;
+	font: 14px Arial, Helvetica, sans-serif;
+	margin: 70px auto;
+}
+
+.calc-title {
+	color: #3b45a6;
+	font-size: 17px;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: 0 1px #fff, 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.calc {
+	background: linear-gradient(#3e8cae,#8bceec);
+	width: 600px;
+	height: 316px;
+	border-radius:5px;
+	margin: 10px auto;
+	position: relative;
+	padding: 10px;
+	color: #fff;
+	box-shadow: 0 4px #009de4, 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.calc-element {
+	position: relative;
+	margin: 10px 0 0 10px;
+}
+
+label {
+	top: 40px;
+	left: 7px;
+	width: 120px;
+	display: inline-block;
+	font-weight: bold;
+	margin-bottom: 5px;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.calc span {
+	color: #fb9005;
+	font-size: 85%;
+	font-weight: bold;
+	line-height: 12px;
+	position: absolute;
+}
+
+#isEmptysumCredit {
+	top: 12px;
+	left: 170px;
+}
+#isEmptytermCredit {
+	top: 25px;
+	left: 170px;
+}
+#isEmptypercentCredit {
+	top: 39px;
+	left: 170px;
+}
+
+#term {
+	top: 40px;
+	left: 51px;
+	width: 39px;
+	height: 20px;
+}
+
+#month {
+	top: 3px;
+	left: 378px;
+	width: 32px;
+	height: 20px;
+}
+
+#selectValuta {
+	top: 48px;
+	left: -79px;
+	width: 53px;
+	height: 20px;
+}
+
+#year{
+	top: 48px;
+	left: -43px;
+	width: 50px;
+	height: 20px;
+}
+
+#methodPay {
+	top: 92px;
+	left: -85px;
+	width: 130px;
+	height: 20px;
+}
+
+#equalPay {
+	top: 94px;
+	left: -55px;
+	width: 148px;
+	height: 20px;
+}
+
+#decrease {
+	top: 77px;
+	left: 200px;
+	min-width: 230px;
+	width: 285px;
+	height: 30px;
+}
+
+input {
+	font-family: inherit;
+	font-size: 100%;
+	margin: 0;
+	line-height: normal;
+	padding: 4px;
+	box-shadow: 0 2px rgba(0,0,0,0.2);
+}
+
+#sumCredit {
+	top: 40px;
+	width: 150px;
+	height: 23px;
+}
+
+#termCredit {
+	top: 3px;
+	left: 387px;
+	width: 80px;
+	height: 23px;
+}
+
+#percentCredit {
+	top: 10px;
+	left: 387px;
+	width: 80px;
+	height: 23px;
+}
+
+select {
+	top: 48px;
+	left: -73px;
+	width: 150px;
+	height: 30px;
+}
+
+#payment1 {
+	top: 97px;
+	left: -53px;
+	position: relative;
+	box-shadow:none;
+}
+
+#payment2 {
+	top: 118px;
+	left: -232px;
+	position: relative;
+	box-shadow:none;
+}
+
+
+#calculate {
+	position: relative;
+	top: 135px;
+	left: -120px;
+	width: 180px;
+	height: 35px;
+	cursor:pointer;
+}
+
+#result {height:0;}
+
+.output {
+	position: relative;
+	left: -10px;
+	top: 138px;
+	width: 600px;
+	height: 155px;
+	background: #6AC3A6;
+	border-radius: 5px;
+
+	font-size: 110%;
+	font-weight: bold;
+	box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2), 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.output span {
+	top: 77px;
+	left:275px;
+	color: #fff;
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.output span:nth-child(2) {
+	top:38px;
+}
+
+.output p {
+	position: relative;
+	width: 190px;
+	left: 65px;
+}
+.resultCredit {
+	top: 34px;
+}
+.montPayment {
+	top: 37px;
+}
+.overPayment {
+	top: 39px;
+}
+
+#buildTable {
+	position: relative;
+	top: 260px;
+	left: -10px;
+	width: 601px;
+	font-size: 97%;
+	color: #888;
+	box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+table  { border-collapse: collapse; margin-bottom:30px; color:#444; }
+td, tr { border: 1px solid black; padding: 5px 7px; background:#D1D3F2;}
+th     { border: 1px solid black; padding: 5px 11px; font-weight: bold; color:#0115FA;}
