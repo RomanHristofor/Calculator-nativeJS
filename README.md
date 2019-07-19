@@ -3,4 +3,4 @@ Calculate loan calculator
 
 Implemented by: **HTML, CSS, JS**
 
-page view - http://romanhristofor.github.io/calculator/
+page view - http://romanhristofor.github.io/Calculator-nativeJS
